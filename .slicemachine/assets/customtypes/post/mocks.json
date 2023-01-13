@@ -1,0 +1,22 @@
+{
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "nice"
+  },
+  "title": {
+    "__TYPE__": "FieldContent",
+    "value": "sale",
+    "type": "Text"
+  },
+  "content": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "paragraph",
+        "content": {
+          "text": "Ipsum nostrud eiusmod proident adipisicing est mollit cupidatat excepteur officia duis et."
+        }
+      }
+    ]
+  }
+}
