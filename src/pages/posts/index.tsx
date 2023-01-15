@@ -1,9 +1,8 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import { PrismicProvider } from '@prismicio/react'
+import Link from 'next/link';
 import { client } from '../../services/prismic'
 import styles from './style.module.scss';
-import { RichText } from 'prismic-dom'
 
 type Post = {
     slug: string;
@@ -20,17 +19,17 @@ export default function Posts({ posts } : PostsProps) {
     return (
         <>
             <Head>
-                <title>Posts | Ignews</title>
+                <title>Posts | ig.news</title>
             </Head>
 
             <main className={styles.container}>
                 <div className={styles.posts}>
                     { posts.map(post => (
-                        <a key={ post.slug } href='#'>
+                        <Link href={`/posts/${post.slug}`}>
                             <time>{ post.updatedAt }</time>
                             <strong>{ post.title }</strong>
                             <p>{ post.excerpt }</p>
-                        </a>
+                        </Link>
                     ))}                                      
                 </div>
             </main>
