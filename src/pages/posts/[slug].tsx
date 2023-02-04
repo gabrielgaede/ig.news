@@ -4,6 +4,7 @@ import Head from "next/head";
 import { client } from "../../services/prismic";
 import * as prismicH from '@prismicio/helpers';
 import styles from './post.module.scss';
+import { redirect } from "next/dist/server/api-utils";
 
 interface PostProps {
     post: {
@@ -39,9 +40,17 @@ export const getServerSideProps: GetServerSideProps = async ({ req, params }) =>
     const session = await getSession({ req })
     const { slug } = params
 
-    // if (!session) {
-        
-    // }
+    //console.log(session);
+
+    if (!session?.activeSubscription) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false,
+            }
+        }
+
+    }
 
     const response = await client.getByUID('post', String(slug), {})
 
